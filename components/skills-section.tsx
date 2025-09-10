@@ -10,7 +10,7 @@ export function SkillsSection() {
     {
       title: "Programming Languages",
       icon: Code,
-      skills: ["Python", "Java", "JavaScript", "TypeScript"],
+      skills: ["Python", "Java", "JavaScript", "TypeScript (Learning)"],
       color: "text-blue-500",
     },
     {
@@ -22,7 +22,7 @@ export function SkillsSection() {
     {
       title: "Backend Development",
       icon: Database,
-      skills: ["Node.js", "Express.js", "FastAPI", "Spring Boot (learning)"],
+      skills: ["Node.js", "Express.js", "FastAPI"],
       color: "text-purple-500",
     },
     {
@@ -38,7 +38,7 @@ export function SkillsSection() {
       color: "text-red-500",
     },
     {
-      title: "AI & Tools",
+      title: "AI & Tools (Learning)",
       icon: Brain,
       skills: ["LangChain", "OpenAI", "Gemini", "N8N", "FAISS", "RAG", "Generative AI Tools"],
       color: "text-cyan-500",

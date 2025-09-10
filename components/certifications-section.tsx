@@ -2,47 +2,61 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Briefcase as Certificate, ExternalLink } from "lucide-react"
+import { Button } from "@/components/ui/button"
+import { Briefcase as Certificate, ExternalLink, Calendar } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function CertificationsSection() {
   const certifications = [
     {
-      title: "Java with DSA & System Design",
-      provider: "Physics Wallah (PW)",
+      title: "Java with DSA and System Design (PW)",
+      provider: "Physics Wallah",
+      date: "Sep 2024",
       category: "Programming",
       description:
         "Comprehensive course covering Java programming, data structures, algorithms, and system design principles",
+      link: "#", // Replace with actual certificate link
     },
     {
-      title: "Full Stack Web Development",
-      provider: "Physics Wallah (PW)",
+      title: "Full Stack Web Development (PW)",
+      provider: "Physics Wallah",
+      date: "Sep 2024",
       category: "Web Development",
       description: "Complete full-stack development course covering frontend and backend technologies",
+      link: "#", // Replace with actual certificate link
     },
     {
-      title: "Cyber Security Fundamentals",
-      provider: "IBM & Zscaler",
+      title: "NIELIT CCC Certificate",
+      provider: "NIELIT",
+      date: "Mar 2023",
+      category: "Computer Literacy",
+      description:
+        "Course on Computer Concepts certification from National Institute of Electronics & Information Technology",
+      link: "#", // Replace with actual certificate link
+    },
+    {
+      title: "Fundamentals of Cybersecurity, Networking for Cyber Professionals",
+      provider: "IBM/Zscaler",
+      date: "Feb 2025",
       category: "Security",
       description: "Foundational cybersecurity concepts and zero trust cloud security principles",
+      link: "#", // Replace with actual certificate link
+    },
+    {
+      title: "TechSaksham Program – Microsoft & SAP",
+      provider: "Microsoft & SAP",
+      date: "2024",
+      category: "Technology",
+      description: "Industry initiative for skill development in emerging technologies and digital transformation",
+      link: "#", // Replace with actual certificate link
     },
     {
       title: "AICTE Internship on AI: Transformative Learning",
       provider: "AICTE",
+      date: "2024",
       category: "Artificial Intelligence",
       description: "Government-recognized internship program focusing on AI and machine learning applications",
-    },
-    {
-      title: "TechSaksham Program",
-      provider: "Microsoft & SAP",
-      category: "Technology",
-      description: "Industry initiative for skill development in emerging technologies and digital transformation",
-    },
-    {
-      title: "NIELIT CCC & ADCA Certificate",
-      provider: "NIELIT",
-      category: "Computer Literacy",
-      description: "Course on Computer Concepts and Advanced Diploma in Computer Applications",
+      link: "#", // Replace with actual certificate link
     },
   ]
 
@@ -80,9 +94,9 @@ export function CertificationsSection() {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow">
+              <Card className="h-full hover:shadow-lg transition-all duration-300 hover:scale-105">
                 <CardHeader>
-                  <div className="flex items-start justify-between gap-2 mb-2">
+                  <div className="flex items-start justify-between gap-2 mb-3">
                     <Certificate className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <Badge
                       variant="secondary"
@@ -91,15 +105,24 @@ export function CertificationsSection() {
                       {cert.category}
                     </Badge>
                   </div>
-                  <CardTitle className="text-lg leading-tight">{cert.title}</CardTitle>
-                  <CardDescription className="font-medium">{cert.provider}</CardDescription>
+                  <CardTitle className="text-lg leading-tight mb-2">{cert.title}</CardTitle>
+                  <CardDescription className="font-medium text-primary">{cert.provider}</CardDescription>
+                  <div className="flex items-center gap-2 mt-2">
+                    <Calendar className="w-4 h-4 text-muted-foreground" />
+                    <p className="text-sm text-muted-foreground font-medium">{cert.date}</p>
+                  </div>
                 </CardHeader>
                 <CardContent>
                   <p className="text-sm text-muted-foreground leading-relaxed mb-4">{cert.description}</p>
-                  <div className="flex items-center gap-2 text-sm text-primary hover:text-primary/80 cursor-pointer">
-                    <ExternalLink className="w-4 h-4" />
-                    <span>View Certificate</span>
-                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="w-full bg-transparent hover:bg-primary hover:text-primary-foreground transition-colors"
+                    onClick={() => window.open(cert.link, "_blank")}
+                  >
+                    <ExternalLink className="w-4 h-4 mr-2" />
+                    View Certificate
+                  </Button>
                 </CardContent>
               </Card>
             </motion.div>

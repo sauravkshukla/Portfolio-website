@@ -1,8 +1,9 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Download, Mail, User } from "lucide-react"
+import { Download, Mail } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function HeroSection() {
   return (
@@ -10,8 +11,15 @@ export function HeroSection() {
       <div className="max-w-4xl mx-auto text-center">
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
           <div className="mb-8">
-            <div className="w-32 h-32 mx-auto mb-6 rounded-full bg-gradient-to-br from-primary to-primary/60 flex items-center justify-center">
-              <User className="w-16 h-16 text-primary-foreground" />
+            <div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-primary/20 shadow-lg">
+              <Image
+                src="/images/profile.jpg"
+                alt="Saurav Kumar Shukla"
+                width={128}
+                height={128}
+                className="w-full h-full object-cover"
+                priority
+              />
             </div>
             <h1 className="text-4xl sm:text-6xl font-bold mb-4 text-balance">Saurav Kumar Shukla</h1>
             <p className="text-xl sm:text-2xl text-muted-foreground mb-6 text-balance">

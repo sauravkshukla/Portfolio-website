@@ -14,36 +14,48 @@ export function ProjectsSection() {
         "SaaS for AI-powered code generation with Next.js, Tailwind, Google AI, Convex DB, PayPal API, and Sandpack integration.",
       technologies: ["Next.js", "Tailwind CSS", "Google AI", "Convex DB", "PayPal API"],
       category: "Web Development",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "https://axion-demo.vercel.app", // Customizable
     },
     {
       title: "Carrier Connect",
       description: "Job portal with MongoDB, Express.js, Auth0 authentication, advanced filters, and responsive UI.",
       technologies: ["MongoDB", "Express.js", "Auth0", "React", "Node.js"],
       category: "Web Development",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
     },
     {
       title: "RemoteReady",
       description: "Full-stack AI platform to recommend remote jobs using OpenAI, LangChain, FastAPI, and FAISS.",
       technologies: ["OpenAI", "LangChain", "FastAPI", "FAISS", "Python"],
       category: "AI Platform",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "https://remoteready-demo.vercel.app", // Customizable
     },
     {
       title: "AI Agent for Corporate Workload",
       description: "Automated HR & Sales workflows using Pinecone, Gemini, and ElevenLabs for voice integration.",
       technologies: ["Pinecone", "Gemini", "ElevenLabs", "Python", "AI"],
       category: "AI Automation",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
     },
     {
       title: "Gemini AI Clone",
       description: "React-based chatbot application mimicking Google Gemini AI interface and functionality.",
       technologies: ["React", "JavaScript", "AI API", "CSS3"],
       category: "Web Development",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "https://gemini-clone-demo.vercel.app", // Customizable
     },
     {
       title: "Indian Culture Website",
       description: "Comprehensive website showcasing the rich cultural heritage of India with interactive elements.",
       technologies: ["HTML5", "CSS3", "JavaScript", "Bootstrap"],
       category: "Web Development",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "https://indian-culture-demo.vercel.app", // Customizable
     },
   ]
 
@@ -54,24 +66,64 @@ export function ProjectsSection() {
         "SQL Server ETL pipeline with Twilio API alerts and video capture integration for customer retention.",
       technologies: ["SQL Server", "Twilio API", "Python", "ETL", "Analytics"],
       category: "Data Science",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
     },
     {
       title: "SMS Spam Detection System",
       description: "NLP-based Naive Bayes classifier with TF-IDF achieving 96% test accuracy for spam detection.",
       technologies: ["Python", "NLP", "Naive Bayes", "TF-IDF", "Scikit-learn"],
       category: "Machine Learning",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "https://spam-detection-demo.vercel.app", // Customizable
     },
     {
       title: "IPL Analysis Dashboard",
       description: "Power BI dashboard with KPIs including Orange Cap, Purple Cap, and Team Standings analysis.",
       technologies: ["Power BI", "SQL", "Data Analytics", "DAX"],
       category: "Data Analytics",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "https://ipl-dashboard-demo.vercel.app", // Customizable
     },
     {
       title: "Credit Card Dashboard",
       description: "Real-time financial insights dashboard using SQL and Power BI for transaction analysis.",
       technologies: ["SQL", "Power BI", "Financial Analytics", "DAX"],
       category: "Data Analytics",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
+    },
+    {
+      title: "India Elections Result Analysis (Power BI)",
+      description: "Visualized party performance, voter trends, and region-wise distribution.",
+      technologies: ["Power BI", "Data Analytics", "DAX", "Political Data"],
+      category: "Data Analytics",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
+    },
+    {
+      title: "HR Analytics Dashboard (Power BI)",
+      description: "Dashboard with attrition insights, employee performance, and workforce KPIs.",
+      technologies: ["Power BI", "HR Analytics", "DAX", "Workforce Data"],
+      category: "Data Analytics",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
+    },
+    {
+      title: "Superstore Sales Dashboard (Power BI)",
+      description: "Sales insights dashboard highlighting revenue trends, regional sales, and product performance.",
+      technologies: ["Power BI", "Sales Analytics", "DAX", "Business Intelligence"],
+      category: "Data Analytics",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
+    },
+    {
+      title: "Ecommerce Sales Dashboard (Power BI)",
+      description: "Dashboard with customer segmentation, sales KPIs, and profit margin analysis.",
+      technologies: ["Power BI", "E-commerce Analytics", "DAX", "Customer Analytics"],
+      category: "Data Analytics",
+      githubLink: "https://github.com/sauravkshukla", // Customizable
+      demoLink: "", // Can be empty if no demo available
     },
   ]
 
@@ -127,13 +179,25 @@ export function ProjectsSection() {
                       ))}
                     </div>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="outline" className="flex-1 bg-transparent">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 bg-transparent"
+                        onClick={() => window.open(project.githubLink, "_blank")}
+                        disabled={!project.githubLink}
+                      >
                         <Github className="w-3 h-3 mr-1" />
-                        Code
+                        View Code
                       </Button>
-                      <Button size="sm" variant="outline" className="flex-1 bg-transparent">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 bg-transparent"
+                        onClick={() => window.open(project.demoLink, "_blank")}
+                        disabled={!project.demoLink}
+                      >
                         <ExternalLink className="w-3 h-3 mr-1" />
-                        Demo
+                        Live Demo
                       </Button>
                     </div>
                   </CardContent>
@@ -143,11 +207,11 @@ export function ProjectsSection() {
           </div>
         </div>
 
-        {/* Data Science Projects */}
+        {/* Data Analytics Projects */}
         <div>
           <div className="flex items-center gap-3 mb-8">
             <BarChart className="w-6 h-6 text-green-500" />
-            <h3 className="text-2xl font-semibold">Data Science & Analytics Projects</h3>
+            <h3 className="text-2xl font-semibold">Data Analytics Projects</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {dataProjects.map((project, index) => (
@@ -179,13 +243,25 @@ export function ProjectsSection() {
                       ))}
                     </div>
                     <div className="flex gap-2">
-                      <Button size="sm" variant="outline" className="flex-1 bg-transparent">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 bg-transparent"
+                        onClick={() => window.open(project.githubLink, "_blank")}
+                        disabled={!project.githubLink}
+                      >
                         <Github className="w-3 h-3 mr-1" />
-                        Code
+                        View Code
                       </Button>
-                      <Button size="sm" variant="outline" className="flex-1 bg-transparent">
+                      <Button
+                        size="sm"
+                        variant="outline"
+                        className="flex-1 bg-transparent"
+                        onClick={() => window.open(project.demoLink, "_blank")}
+                        disabled={!project.demoLink}
+                      >
                         <ExternalLink className="w-3 h-3 mr-1" />
-                        View
+                        View Project
                       </Button>
                     </div>
                   </CardContent>

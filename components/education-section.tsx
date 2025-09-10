@@ -29,17 +29,6 @@ export function EducationSection() {
         "Comprehensive undergraduate program covering programming fundamentals, web development, and computer science principles.",
       highlights: ["Programming Fundamentals", "Web Development", "Database Systems", "Software Engineering"],
     },
-    {
-      degree: "Higher Secondary (12th)",
-      institution: "Local Institution",
-      location: "Jharkhand",
-      period: "2019",
-      cgpa: "Completed",
-      status: "Completed",
-      description:
-        "Completed higher secondary education with one gap year for personal development and skill building.",
-      highlights: ["Mathematics", "Physics", "Chemistry", "Computer Science"],
-    },
   ]
 
   return (
@@ -86,12 +75,10 @@ export function EducationSection() {
                           <Calendar className="w-4 h-4" />
                           {edu.period}
                         </div>
-                        {edu.cgpa !== "Completed" && (
-                          <div className="flex items-center gap-1">
-                            <Award className="w-4 h-4" />
-                            CGPA: {edu.cgpa}
-                          </div>
-                        )}
+                        <div className="flex items-center gap-1">
+                          <Award className="w-4 h-4" />
+                          CGPA: {edu.cgpa}
+                        </div>
                       </div>
                     </div>
                   </div>

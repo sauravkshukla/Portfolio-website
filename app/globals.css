@@ -1,5 +1,5 @@
-@import 'tailwindcss';
-@import 'tw-animate-css';
+@import "tailwindcss";
+@import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
 
@@ -39,8 +39,9 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
+/* Updated dark mode with dark + green gradient background */
 .dark {
-  --background: oklch(0.145 0 0);
+  --background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #134e4a 50%, #1e293b 75%, #0f172a 100%);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -120,6 +121,16 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground transition-all duration-300;
+  }
+
+  /* Added dark mode gradient background */
+  body.dark {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 25%, #134e4a 50%, #1e293b 75%, #0f172a 100%);
+    background-attachment: fixed;
+  }
+
+  body:not(.dark) {
+    @apply bg-background;
   }
 }

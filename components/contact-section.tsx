@@ -1,13 +1,57 @@
 "use client"
 
+import type React from "react"
+
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Mail, Phone, Linkedin, Github, Code, Send } from "lucide-react"
 import { motion } from "framer-motion"
+import { useState } from "react"
 
 export function ContactSection() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      })
+
+      if (response.ok) {
+        alert("Message sent successfully!")
+        setFormData({ name: "", email: "", subject: "", message: "" })
+      } else {
+        alert("Failed to send message. Please try again.")
+      }
+    } catch (error) {
+      alert("Failed to send message. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData((prev) => ({
+      ...prev,
+      [e.target.id]: e.target.value,
+    }))
+  }
+
   const contactInfo = [
     {
       icon: Mail,
@@ -70,37 +114,59 @@ export function ContactSection() {
                 <CardTitle>Send me a message</CardTitle>
                 <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="grid sm:grid-cols-2 gap-4">
-                  <div>
-                    <label htmlFor="name" className="text-sm font-medium mb-2 block">
-                      Name
-                    </label>
-                    <Input id="name" placeholder="Your name" />
+              <CardContent>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <div>
+                      <label htmlFor="name" className="text-sm font-medium mb-2 block">
+                        Name
+                      </label>
+                      <Input id="name" placeholder="Your name" value={formData.name} onChange={handleChange} required />
+                    </div>
+                    <div>
+                      <label htmlFor="email" className="text-sm font-medium mb-2 block">
+                        Email
+                      </label>
+                      <Input
+                        id="email"
+                        type="email"
+                        placeholder="your.email@example.com"
+                        value={formData.email}
+                        onChange={handleChange}
+                        required
+                      />
+                    </div>
                   </div>
                   <div>
-                    <label htmlFor="email" className="text-sm font-medium mb-2 block">
-                      Email
+                    <label htmlFor="subject" className="text-sm font-medium mb-2 block">
+                      Subject
                     </label>
-                    <Input id="email" type="email" placeholder="your.email@example.com" />
+                    <Input
+                      id="subject"
+                      placeholder="What's this about?"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                    />
                   </div>
-                </div>
-                <div>
-                  <label htmlFor="subject" className="text-sm font-medium mb-2 block">
-                    Subject
-                  </label>
-                  <Input id="subject" placeholder="What's this about?" />
-                </div>
-                <div>
-                  <label htmlFor="message" className="text-sm font-medium mb-2 block">
-                    Message
-                  </label>
-                  <Textarea id="message" placeholder="Tell me about your project or just say hello..." rows={5} />
-                </div>
-                <Button className="w-full">
-                  <Send className="w-4 h-4 mr-2" />
-                  Send Message
-                </Button>
+                  <div>
+                    <label htmlFor="message" className="text-sm font-medium mb-2 block">
+                      Message
+                    </label>
+                    <Textarea
+                      id="message"
+                      placeholder="Tell me about your project or just say hello..."
+                      rows={5}
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                    />
+                  </div>
+                  <Button type="submit" className="w-full" disabled={isSubmitting}>
+                    <Send className="w-4 h-4 mr-2" />
+                    {isSubmitting ? "Sending..." : "Send Message"}
+                  </Button>
+                </form>
               </CardContent>
             </Card>
           </motion.div>

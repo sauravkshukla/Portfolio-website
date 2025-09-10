@@ -1,8 +1,9 @@
 "use client"
 
 import { Card, CardContent } from "@/components/ui/card"
-import { User, GraduationCap } from "lucide-react"
+import { GraduationCap } from "lucide-react"
 import { motion } from "framer-motion"
+import Image from "next/image"
 
 export function AboutSection() {
   return (
@@ -28,8 +29,14 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-full h-80 bg-gradient-to-br from-primary/20 to-primary/5 rounded-lg flex items-center justify-center mb-6">
-              <User className="w-24 h-24 text-primary" />
+            <div className="w-full h-135 rounded-lg mb-10">
+              <Image
+                src="/images/profile.jpg"
+                alt="Saurav Kumar Shukla"
+                width={250}
+                height={200}
+                className="w-full h-full object-cover"
+              />
             </div>
           </motion.div>
 

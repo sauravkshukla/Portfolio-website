@@ -44,8 +44,12 @@ export function ContactSection() {
         // Clear success message after 5 seconds
         setTimeout(() => setSuccessMessage(""), 5000)
       } else {
+<<<<<<< HEAD
         const errorMessage = data.errors && data.errors.length > 0 ? data.errors[0] : (data.error || "Failed to send message. Please try again.");
         setErrorMessage(errorMessage)
+=======
+        setErrorMessage(data.error || "Failed to send message. Please try again.")
+>>>>>>> 63e88a15bde1813690da8a0d14dee9a61b62dba6
       }
     } catch (error) {
       setErrorMessage("Failed to send message. Please try again.")

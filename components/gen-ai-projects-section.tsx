@@ -17,6 +17,7 @@ export function GenAIProjectsSection() {
       githubLink: "https://github.com/sauravkshukla/AstraSentinel",
       demoLink: "",
     },
+<<<<<<< HEAD
     {
       title: "AI Agent for Corporate Workload",
       description: "An advanced collection of enterprise-grade n8n workflow automation templates designed to optimize and accelerate various business processes. Leveraging modern AI capabilities, these workflows automate HR management, intelligent data analysis, sales operations, and more. The system enables seamless integrations, scalable architecture, and efficient task automation, helping organizations streamline operations, reduce manual effort, and improve overall productivity.",
@@ -25,6 +26,8 @@ export function GenAIProjectsSection() {
       githubLink: "https://github.com/sauravkshukla", // Customizable
       demoLink: "", // Can be empty if no demo available
     },
+=======
+>>>>>>> 63e88a15bde1813690da8a0d14dee9a61b62dba6
   ]
 
   return (

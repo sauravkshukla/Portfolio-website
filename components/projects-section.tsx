@@ -9,6 +9,15 @@ import { motion } from "framer-motion"
 export function ProjectsSection() {
   const webProjects = [
     {
+      title: "AstraSentinel",
+      description:
+        "AstraSentinel is an AI-powered crisis detection and emotional response system designed to detect distress signals in user conversations. The platform uses advanced natural language processing and generative AI to analyze emotional patterns, identify potential mental health crises, and provide intelligent responses or escalate emergencies when necessary.",
+      technologies: ["Python", "LangChain", "OpenAI", "NLP", "Crisis Detection", "Generative AI"],
+      category: "AI Safety",
+      githubLink: "https://github.com/sauravkshukla/AstraSentinel",
+      demoLink: "",
+    },
+    {
       title: "Axion",
       description:
         "SaaS for AI-powered code generation with Next.js, Tailwind, Google AI, Convex DB, PayPal API, and Sandpack integration.",
@@ -207,11 +216,11 @@ export function ProjectsSection() {
           </div>
         </div>
 
-        {/* Data Analytics Projects */}
+        {/* Data Science and Analytics Projects */}
         <div>
           <div className="flex items-center gap-3 mb-8">
             <BarChart className="w-6 h-6 text-green-500" />
-            <h3 className="text-2xl font-semibold">Data Analytics Projects</h3>
+            <h3 className="text-2xl font-semibold">Data Science and Analytics</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {dataProjects.map((project, index) => (

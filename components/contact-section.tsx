@@ -18,10 +18,14 @@ export function ContactSection() {
     message: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [successMessage, setSuccessMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSuccessMessage("")
+    setErrorMessage("")
 
     try {
       const response = await fetch("/api/contact", {
@@ -32,14 +36,18 @@ export function ContactSection() {
         body: JSON.stringify(formData),
       })
 
-      if (response.ok) {
-        alert("Message sent successfully!")
+      const data = await response.json()
+
+      if (response.ok && data.success) {
+        setSuccessMessage("Your message has been sent successfully!")
         setFormData({ name: "", email: "", subject: "", message: "" })
+        // Clear success message after 5 seconds
+        setTimeout(() => setSuccessMessage(""), 5000)
       } else {
-        alert("Failed to send message. Please try again.")
+        setErrorMessage(data.error || "Failed to send message. Please try again.")
       }
     } catch (error) {
-      alert("Failed to send message. Please try again.")
+      setErrorMessage("Failed to send message. Please try again.")
     } finally {
       setIsSubmitting(false)
     }
@@ -115,6 +123,16 @@ export function ContactSection() {
                 <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
               </CardHeader>
               <CardContent>
+                {successMessage && (
+                  <div className="mb-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-700 dark:text-green-400 text-sm">
+                    {successMessage}
+                  </div>
+                )}
+                {errorMessage && (
+                  <div className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-700 dark:text-red-400 text-sm">
+                    {errorMessage}
+                  </div>
+                )}
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>

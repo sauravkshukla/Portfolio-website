@@ -2,6 +2,7 @@ import { HeroSection } from "@/components/hero-section"
 import { AboutSection } from "@/components/about-section"
 import { SkillsSection } from "@/components/skills-section"
 import { ProjectsSection } from "@/components/projects-section"
+import { GenAIProjectsSection } from "@/components/gen-ai-projects-section"
 import { ExperienceSection } from "@/components/experience-section"
 import { AchievementsSection } from "@/components/achievements-section"
 import { CertificationsSection } from "@/components/certifications-section"
@@ -21,6 +22,7 @@ export default function Home() {
           <AboutSection />
           <SkillsSection />
           <ProjectsSection />
+          <GenAIProjectsSection />
           <ExperienceSection />
           <AchievementsSection />
           <CertificationsSection />

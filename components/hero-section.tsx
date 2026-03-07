@@ -6,6 +6,24 @@ import { motion } from "framer-motion"
 import Image from "next/image"
 
 export function HeroSection() {
+  const handleHireMe = () => {
+    const contactSection = document.getElementById("contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
+  const handleViewResume = () => {
+    window.open("/resume/Saurav_Kumar_Shukla_Resume.pdf", "_blank")
+  }
+
+  const handleContactMe = () => {
+    const contactSection = document.getElementById("contact")
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: "smooth" })
+    }
+  }
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto text-center">
@@ -37,15 +55,15 @@ export function HeroSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
-            <Button size="lg" className="w-full sm:w-auto">
+            <Button size="lg" className="w-full sm:w-auto" onClick={handleHireMe}>
               <Mail className="mr-2 h-4 w-4" />
               Hire Me
             </Button>
-            <Button variant="outline" size="lg" className="w-full sm:w-auto bg-transparent">
+            <Button variant="outline" size="lg" className="w-full sm:w-auto bg-transparent" onClick={handleViewResume}>
               <Download className="mr-2 h-4 w-4" />
               View Resume
             </Button>
-            <Button variant="secondary" size="lg" className="w-full sm:w-auto">
+            <Button variant="secondary" size="lg" className="w-full sm:w-auto" onClick={handleContactMe}>
               Contact Me
             </Button>
           </motion.div>

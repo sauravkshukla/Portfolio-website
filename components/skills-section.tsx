@@ -28,7 +28,7 @@ export function SkillsSection() {
     {
       title: "Databases",
       icon: Database,
-      skills: ["MySQL", "PostgreSQL", "MongoDB"],
+      skills: ["MySQL", "PostgreSQL", "MongoDB", "Pinecone DB"],
       color: "text-orange-500",
     },
     {
@@ -40,7 +40,7 @@ export function SkillsSection() {
     {
       title: "AI & Tools (Learning)",
       icon: Brain,
-      skills: ["LangChain", "OpenAI", "Gemini", "N8N", "FAISS", "RAG", "Generative AI Tools"],
+      skills: ["LangChain", "OpenAI", "Gemini", "N8N", "FAISS", "RAG", "Generative AI Tools", "LangGraph", "Hugging Face"],
       color: "text-cyan-500",
     },
     {

@@ -8,6 +8,7 @@ import { motion } from "framer-motion"
 
 export function ProjectsSection() {
   const webProjects = [
+  
     {
       title: "Axion",
       description:
@@ -207,11 +208,11 @@ export function ProjectsSection() {
           </div>
         </div>
 
-        {/* Data Analytics Projects */}
+        {/* Data Science and Analytics Projects */}
         <div>
           <div className="flex items-center gap-3 mb-8">
             <BarChart className="w-6 h-6 text-green-500" />
-            <h3 className="text-2xl font-semibold">Data Analytics Projects</h3>
+            <h3 className="text-2xl font-semibold">Data Science and Analytics</h3>
           </div>
           <div className="grid md:grid-cols-2 gap-6">
             {dataProjects.map((project, index) => (

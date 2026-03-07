@@ -12,7 +12,7 @@ export function EducationSection() {
       institution: "SRM Institute of Science & Technology",
       location: "Chennai, Tamil Nadu",
       period: "2024 – 2026",
-      cgpa: "9.52",
+      cgpa: "9.68",
       status: "Current",
       description:
         "Pursuing advanced studies in computer applications with focus on software development, AI, and data science.",

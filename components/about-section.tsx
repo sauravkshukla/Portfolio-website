@@ -29,12 +29,12 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-full h-135 rounded-lg mb-10">
+            <div className="w-full h-auto rounded-lg mb-10 overflow-hidden">
               <Image
                 src="/images/profile.jpg"
-                alt="Saurav Kumar Shukla"
-                width={250}
-                height={200}
+                alt="Saurav Shukla"
+                width={400}
+                height={500}
                 className="w-full h-full object-cover"
               />
             </div>
@@ -67,7 +67,7 @@ export function AboutSection() {
                   <div>
                     <p className="font-medium">MCA (2024–2026)</p>
                     <p className="text-sm text-muted-foreground">SRM Institute of Science & Technology, Chennai</p>
-                    <p className="text-sm text-primary font-medium">CGPA: 9.52</p>
+                    <p className="text-sm text-primary font-medium">CGPA: 9.68</p>
                   </div>
                   <div>
                     <p className="font-medium">BCA (2020–2023)</p>

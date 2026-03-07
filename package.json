@@ -64,10 +64,7 @@
     "react-hook-form": "^7.60.0",
     "react-resizable-panels": "^2.1.7",
     "recharts": "2.15.4",
-<<<<<<< HEAD
     "resend": "^6.9.3",
-=======
->>>>>>> 63e88a15bde1813690da8a0d14dee9a61b62dba6
     "sonner": "^1.7.4",
     "svelte": "latest",
     "tailwind-merge": "^2.5.5",
@@ -88,8 +85,4 @@
     "tw-animate-css": "1.3.3",
     "typescript": "^5"
   }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> 63e88a15bde1813690da8a0d14dee9a61b62dba6

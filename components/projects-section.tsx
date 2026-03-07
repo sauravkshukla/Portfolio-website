@@ -8,15 +8,7 @@ import { motion } from "framer-motion"
 
 export function ProjectsSection() {
   const webProjects = [
-    {
-      title: "AstraSentinel",
-      description:
-        "AstraSentinel is an AI-powered crisis detection and emotional response system designed to detect distress signals in user conversations. The platform uses advanced natural language processing and generative AI to analyze emotional patterns, identify potential mental health crises, and provide intelligent responses or escalate emergencies when necessary.",
-      technologies: ["Python", "LangChain", "OpenAI", "NLP", "Crisis Detection", "Generative AI"],
-      category: "AI Safety",
-      githubLink: "https://github.com/sauravkshukla/AstraSentinel",
-      demoLink: "",
-    },
+  
     {
       title: "Axion",
       description:

@@ -6,9 +6,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, Phone, Linkedin, Github, Code, Send } from "lucide-react"
+import { AnimatePresence } from "framer-motion"
+import { Mail, Phone, Linkedin, Github, Code, Send, CheckCircle2, AlertCircle } from "lucide-react"
 import { motion } from "framer-motion"
 import { useState } from "react"
+import { DownloadResumeSection } from "@/components/download-resume-section"
 
 export function ContactSection() {
   const [formData, setFormData] = useState({
@@ -123,16 +125,30 @@ export function ContactSection() {
                 <CardDescription>Fill out the form below and I'll get back to you as soon as possible.</CardDescription>
               </CardHeader>
               <CardContent>
-                {successMessage && (
-                  <div className="mb-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-700 dark:text-green-400 text-sm">
-                    {successMessage}
-                  </div>
-                )}
-                {errorMessage && (
-                  <div className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-700 dark:text-red-400 text-sm">
-                    {errorMessage}
-                  </div>
-                )}
+                <AnimatePresence>
+                  {successMessage && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      className="mb-4 p-4 bg-green-500/10 border border-green-500/20 rounded-lg text-green-700 dark:text-green-400 text-sm flex items-center gap-2"
+                    >
+                      <CheckCircle2 className="h-5 w-5 flex-shrink-0" />
+                      <span>{successMessage}</span>
+                    </motion.div>
+                  )}
+                  {errorMessage && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                      className="mb-4 p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-700 dark:text-red-400 text-sm flex items-center gap-2"
+                    >
+                      <AlertCircle className="h-5 w-5 flex-shrink-0" />
+                      <span>{errorMessage}</span>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div className="grid sm:grid-cols-2 gap-4">
                     <div>
@@ -180,11 +196,26 @@ export function ContactSection() {
                       required
                     />
                   </div>
-                  <Button type="submit" className="w-full" disabled={isSubmitting}>
-                    <Send className="w-4 h-4 mr-2" />
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                  </Button>
+                  <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                    <Button type="submit" className="w-full" disabled={isSubmitting}>
+                      {isSubmitting ? (
+                        <>
+                          <motion.div animate={{ rotate: 360 }} transition={{ duration: 2, repeat: Infinity }}>
+                            <Send className="w-4 h-4 mr-2" />
+                          </motion.div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4 mr-2" />
+                          Send Message
+                        </>
+                      )}
+                    </Button>
+                  </motion.div>
                 </form>
+
+                <DownloadResumeSection />
               </CardContent>
             </Card>
           </motion.div>

@@ -75,20 +75,35 @@ export function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: index * 0.1 }}
               viewport={{ once: true }}
+              whileHover={{ y: -8 }}
             >
-              <Card className="h-full hover:shadow-lg transition-shadow">
+              <Card className="h-full hover:shadow-lg transition-all duration-300 cursor-pointer group">
                 <CardHeader>
                   <CardTitle className="flex items-center gap-3">
-                    <category.icon className={`w-6 h-6 ${category.color}`} />
-                    <span className="text-lg">{category.title}</span>
+                    <motion.div
+                      whileHover={{ rotate: 10, scale: 1.1 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-6 h-6 ${category.color}`}
+                    >
+                      <category.icon className="w-full h-full" />
+                    </motion.div>
+                    <span className="text-lg group-hover:text-primary transition-colors">{category.title}</span>
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <div className="flex flex-wrap gap-2">
-                    {category.skills.map((skill) => (
-                      <Badge key={skill} variant="secondary" className="text-sm">
-                        {skill}
-                      </Badge>
+                    {category.skills.map((skill, i) => (
+                      <motion.div
+                        key={skill}
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.3, delay: i * 0.05 }}
+                        viewport={{ once: true }}
+                      >
+                        <Badge variant="secondary" className="text-sm group-hover:bg-primary/20 transition-colors">
+                          {skill}
+                        </Badge>
+                      </motion.div>
                     ))}
                   </div>
                 </CardContent>

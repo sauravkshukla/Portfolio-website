@@ -29,13 +29,18 @@ export function AboutSection() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="w-full h-auto rounded-lg mb-10 overflow-hidden">
+            <div className="w-full h-auto rounded-lg mb-10 overflow-hidden relative group">
               <Image
                 src="/images/profile.jpg"
                 alt="Saurav Shukla"
                 width={400}
                 height={500}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              />
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
               />
             </div>
           </motion.div>

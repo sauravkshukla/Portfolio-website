@@ -158,8 +158,9 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -8 }}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow">
+                <Card className="h-full hover:shadow-xl transition-all duration-300 group cursor-pointer border border-border hover:border-primary/50">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <div>
@@ -222,8 +223,9 @@ export function ProjectsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: index * 0.1 }}
                 viewport={{ once: true }}
+                whileHover={{ y: -8 }}
               >
-                <Card className="h-full hover:shadow-lg transition-shadow">
+                <Card className="h-full hover:shadow-xl transition-all duration-300 group cursor-pointer border border-border hover:border-primary/50">
                   <CardHeader>
                     <div className="flex justify-between items-start">
                       <div>

@@ -3,8 +3,45 @@ import { type NextRequest, NextResponse } from "next/server"
 // Email validation regex
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
+// Simple rate limiting using in-memory store (for production, use Redis or similar)
+const requestLog = new Map<string, number[]>()
+const RATE_LIMIT_WINDOW = 60000 // 1 minute
+const MAX_REQUESTS_PER_WINDOW = 3
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now()
+  const userRequests = requestLog.get(ip) || []
+  
+  // Filter out requests outside the window
+  const recentRequests = userRequests.filter(timestamp => now - timestamp < RATE_LIMIT_WINDOW)
+  
+  if (recentRequests.length >= MAX_REQUESTS_PER_WINDOW) {
+    return true
+  }
+  
+  // Update the log
+  recentRequests.push(now)
+  requestLog.set(ip, recentRequests)
+  
+  return false
+}
+
 export async function POST(request: NextRequest) {
   try {
+    // Get client IP for rate limiting
+    const ip = request.headers.get("x-forwarded-for") || request.headers.get("x-real-ip") || "unknown"
+    
+    // Check rate limit
+    if (isRateLimited(ip)) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Too many requests. Please try again later.",
+        },
+        { status: 429 }
+      )
+    }
+
     const { name, email, subject, message } = await request.json()
 
     // Validation
@@ -12,6 +49,8 @@ export async function POST(request: NextRequest) {
 
     if (!name || name.trim().length === 0) {
       errors.push("Name is required")
+    } else if (name.trim().length < 2) {
+      errors.push("Name must be at least 2 characters")
     }
 
     if (!email || email.trim().length === 0) {
@@ -22,10 +61,20 @@ export async function POST(request: NextRequest) {
 
     if (!subject || subject.trim().length === 0) {
       errors.push("Subject is required")
+    } else if (subject.trim().length < 3) {
+      errors.push("Subject must be at least 3 characters")
     }
 
     if (!message || message.trim().length === 0) {
       errors.push("Message is required")
+    } else if (message.trim().length < 10) {
+      errors.push("Message must be at least 10 characters")
+    }
+
+    // Spam detection - check for excessive links or suspicious patterns
+    const linkCount = (message.match(/https?:\/\//g) || []).length
+    if (linkCount > 5) {
+      errors.push("Message contains too many links")
     }
 
     if (errors.length > 0) {

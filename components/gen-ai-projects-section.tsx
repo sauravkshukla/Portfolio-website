@@ -1,37 +1,39 @@
 "use client"
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { ExternalLink, Github, Brain } from "lucide-react"
+import { Github, ExternalLink, Brain, Zap } from "lucide-react"
 import { motion } from "framer-motion"
 
 export function GenAIProjectsSection() {
-  const genAIProjects = [
+  const projects = [
     {
       title: "AstraSentinel",
       description:
-        "AstraSentinel is an AI-powered crisis detection and emotional response system designed to detect distress signals in user conversations. The platform uses advanced natural language processing and generative AI to analyze emotional patterns, identify potential mental health crises, and provide intelligent responses or escalate emergencies when necessary. It integrates modern AI frameworks and APIs to create a real-time safety-focused conversational assistant.",
-      technologies: ["Python", "LangChain", "OpenAI", "NLP", "Crisis Detection", "Generative AI"],
-      category: "AI Safety",
+        "An AI-powered crisis detection and emotional response system that analyzes conversations in real time to detect distress signals and provide intelligent support. It integrates AI agents, emergency detection, and therapist recommendations to assist users during critical situations.",
       githubLink: "https://github.com/sauravkshukla/AstraSentinel",
       demoLink: "",
+      skills: ["Python", "LangChain", "OpenAI API", "NLP", "AI Agents", "Crisis Detection"],
+      tools: ["LangGraph", "Hugging Face", "Vector Databases", "FastAPI", "WebSocket"],
+      accentColor: "from-violet-500 to-purple-600",
+      icon: Brain,
     },
-<<<<<<< HEAD
     {
       title: "AI Agent for Corporate Workload",
-      description: "An advanced collection of enterprise-grade n8n workflow automation templates designed to optimize and accelerate various business processes. Leveraging modern AI capabilities, these workflows automate HR management, intelligent data analysis, sales operations, and more. The system enables seamless integrations, scalable architecture, and efficient task automation, helping organizations streamline operations, reduce manual effort, and improve overall productivity.",
-      technologies: ["Pinecone", "Gemini", "ElevenLabs", "Python", "AI", "n8n", "LangChain"],
-      category: "AI Automation",
-      githubLink: "https://github.com/sauravkshukla", // Customizable
-      demoLink: "", // Can be empty if no demo available
+      description:
+        "An advanced collection of enterprise-grade n8n workflow automation templates designed to optimize and accelerate various business processes. These workflows automate HR management, intelligent data analysis, sales operations, and other tasks using AI-driven automation.",
+      githubLink: "https://github.com/sauravkshukla/AI-Agent-automation.git",
+      demoLink: "",
+      skills: ["Python", "LangChain", "LLM APIs", "AI Agents", "Automation", "Workflow Design"],
+      tools: ["n8n", "OpenAI API", "Vector Databases", "APIs", "Automation Tools"],
+      accentColor: "from-cyan-500 to-blue-600",
+      icon: Zap,
     },
-=======
->>>>>>> 63e88a15bde1813690da8a0d14dee9a61b62dba6
   ]
 
   return (
-    <section id="gen-ai-projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
+    <section id="genai-projects" className="py-20 px-4 sm:px-6 lg:px-8 bg-muted/30">
       <div className="max-w-6xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -42,61 +44,98 @@ export function GenAIProjectsSection() {
         >
           <h2 className="text-3xl sm:text-4xl font-bold mb-4">Gen AI Projects</h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Advanced AI and machine learning projects pushing the boundaries of modern technology
+            Innovative projects leveraging Generative AI, automation, and intelligent systems.
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {genAIProjects.map((project, index) => (
+        <div className="grid md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
+              whileHover={{ y: -6, scale: 1.01 }}
+              className="group"
             >
-              <Card className="h-full hover:shadow-lg transition-shadow">
+              <Card className="h-full relative overflow-hidden border-border/40 transition-all duration-300 group-hover:border-violet-500/40 group-hover:shadow-xl group-hover:shadow-violet-500/10">
+                {/* Animated top gradient line */}
+                <div className={`absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r ${project.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+
                 <CardHeader>
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <CardTitle className="text-lg mb-2">{project.title}</CardTitle>
-                      <Badge variant="outline" className="text-xs">
-                        {project.category}
-                      </Badge>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className={`w-10 h-10 rounded-xl bg-gradient-to-br ${project.accentColor} flex items-center justify-center flex-shrink-0 group-hover:shadow-lg transition-all duration-300`}>
+                      <project.icon className="w-5 h-5 text-white" />
                     </div>
-                    <Brain className="w-5 h-5 text-cyan-500" />
+                    <CardTitle className="text-xl group-hover:text-violet-400 transition-colors duration-300">
+                      {project.title}
+                    </CardTitle>
                   </div>
-                  <CardDescription className="text-sm leading-relaxed">{project.description}</CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {project.technologies.map((tech) => (
-                      <Badge key={tech} variant="secondary" className="text-xs">
-                        {tech}
-                      </Badge>
-                    ))}
+
+                <CardContent className="space-y-5">
+                  <p className="text-muted-foreground leading-relaxed text-sm">{project.description}</p>
+
+                  {/* Skills Used */}
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                      Skills Used
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.skills.map((skill) => (
+                        <motion.span
+                          key={skill}
+                          whileHover={{ scale: 1.08 }}
+                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20 hover:bg-violet-500/20 transition-colors cursor-default"
+                        >
+                          {skill}
+                        </motion.span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex gap-2">
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 bg-transparent"
-                      onClick={() => window.open(project.githubLink, "_blank")}
-                      disabled={!project.githubLink}
-                    >
-                      <Github className="w-3 h-3 mr-1" />
-                      View Code
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="flex-1 bg-transparent"
-                      onClick={() => window.open(project.demoLink, "_blank")}
-                      disabled={!project.demoLink}
-                    >
-                      <ExternalLink className="w-3 h-3 mr-1" />
-                      Live Demo
-                    </Button>
+
+                  {/* Tools Used */}
+                  <div>
+                    <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider mb-2">
+                      Tools Used
+                    </p>
+                    <div className="flex flex-wrap gap-1.5">
+                      {project.tools.map((tool) => (
+                        <motion.span
+                          key={tool}
+                          whileHover={{ scale: 1.08 }}
+                          className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 hover:bg-cyan-500/20 transition-colors cursor-default"
+                        >
+                          {tool}
+                        </motion.span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Buttons */}
+                  <div className="flex gap-3 pt-1">
+                    {project.githubLink && (
+                      <Button
+                        asChild
+                        variant="outline"
+                        size="sm"
+                        className="hover:bg-violet-500/10 hover:border-violet-500/50 hover:text-violet-400 transition-all duration-200"
+                      >
+                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                          <Github className="w-4 h-4 mr-2" />
+                          GitHub
+                        </a>
+                      </Button>
+                    )}
+                    {project.demoLink && (
+                      <Button asChild size="sm" className="bg-gradient-to-r from-violet-500 to-purple-600 hover:opacity-90">
+                        <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="w-4 h-4 mr-2" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    )}
                   </div>
                 </CardContent>
               </Card>

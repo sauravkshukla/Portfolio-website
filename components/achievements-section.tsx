@@ -3,7 +3,58 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Trophy, Award, Medal, Star, Users } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion"
+
+const iconGradients: Record<string, string> = {
+  "text-yellow-500": "from-yellow-400 to-orange-500",
+  "text-orange-500": "from-orange-400 to-red-500",
+  "text-blue-500": "from-blue-400 to-indigo-500",
+  "text-green-500": "from-green-400 to-emerald-500",
+  "text-purple-500": "from-purple-400 to-violet-500",
+}
+
+function AchievementCard({ achievement, index }: { achievement: { title: string; event: string; award: string; icon: React.ElementType; color: string; description: string }, index: number }) {
+  const gradient = iconGradients[achievement.color] || "from-indigo-400 to-violet-500"
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      viewport={{ once: true }}
+      whileHover={{ y: -6, scale: 1.02 }}
+      className="group h-full"
+    >
+      <Card className="h-full relative overflow-hidden border-border/40 transition-all duration-300 group-hover:shadow-xl group-hover:border-transparent">
+        {/* Gradient border on hover via pseudo-card */}
+        <div className={`absolute inset-0 rounded-lg bg-gradient-to-br ${gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} style={{ padding: "1px" }}>
+          <div className="absolute inset-px rounded-lg bg-card" />
+        </div>
+
+        <CardHeader className="relative">
+          <div className="flex items-center gap-3 mb-3">
+            <motion.div
+              whileHover={{ rotate: 10, scale: 1.15 }}
+              transition={{ duration: 0.2 }}
+              className={`w-12 h-12 rounded-xl bg-gradient-to-br ${gradient} flex items-center justify-center shadow-lg`}
+            >
+              <achievement.icon className="w-6 h-6 text-white" />
+            </motion.div>
+            <Badge variant="outline" className="text-xs">{achievement.award}</Badge>
+          </div>
+          <CardTitle className="text-lg leading-tight group-hover:text-indigo-400 transition-colors duration-300">
+            {achievement.title}
+          </CardTitle>
+          <CardDescription className="font-medium">{achievement.event}</CardDescription>
+        </CardHeader>
+
+        <CardContent className="relative">
+          <p className="text-sm text-muted-foreground leading-relaxed">{achievement.description}</p>
+        </CardContent>
+      </Card>
+    </motion.div>
+  )
+}
 
 export function AchievementsSection() {
   const achievements = [
@@ -67,29 +118,7 @@ export function AchievementsSection() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {achievements.map((achievement, index) => (
-            <motion.div
-              key={achievement.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: index * 0.1 }}
-              viewport={{ once: true }}
-            >
-              <Card className="h-full hover:shadow-lg transition-shadow">
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-2">
-                    <achievement.icon className={`w-6 h-6 ${achievement.color}`} />
-                    <Badge variant="outline" className="text-xs">
-                      {achievement.award}
-                    </Badge>
-                  </div>
-                  <CardTitle className="text-lg leading-tight">{achievement.title}</CardTitle>
-                  <CardDescription className="font-medium">{achievement.event}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{achievement.description}</p>
-                </CardContent>
-              </Card>
-            </motion.div>
+            <AchievementCard key={achievement.title} achievement={achievement} index={index} />
           ))}
         </div>
       </div>

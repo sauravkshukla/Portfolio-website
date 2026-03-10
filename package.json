@@ -44,7 +44,7 @@
     "@remix-run/react": "latest",
     "@sveltejs/kit": "latest",
     "@sveltejs/vite-plugin-svelte": "latest",
-    "@vercel/analytics": "latest",
+    "@vercel/analytics": "^2.0.0",
     "@vue/compiler-sfc": "latest",
     "autoprefixer": "^10.4.20",
     "class-variance-authority": "^0.7.1",

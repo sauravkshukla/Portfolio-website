@@ -1,7 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { Resend } from "resend"
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+
 
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
@@ -9,6 +9,7 @@ const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 const OWNER_EMAIL = "sauravkshukla@gmail.com"
 
 export async function POST(request: NextRequest) {
+  const resend = new Resend(process.env.RESEND_API_KEY)
   try {
     const { name, email, subject, message } = await request.json()
 
@@ -26,7 +27,7 @@ export async function POST(request: NextRequest) {
     const { data, error } = await resend.emails.send({
       from: "onboarding@resend.dev",
       to: [OWNER_EMAIL],
-      reply_to: email,
+      replyTo: email,
       subject: `Portfolio Contact: ${subject}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #0f172a; border-radius: 12px; color: #e2e8f0;">

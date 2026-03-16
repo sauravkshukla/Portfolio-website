@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sauravkshukla.tech/sitemap.xml

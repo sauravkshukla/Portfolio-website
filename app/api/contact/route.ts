@@ -6,7 +6,7 @@ const resend = new Resend(process.env.RESEND_API_KEY)
 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 // Your Resend-registered email (free tier can only send TO this address)
-const OWNER_EMAIL = "1twoka44@gmail.com"
+const OWNER_EMAIL = "sauravkshukla@gmail.com"
 
 export async function POST(request: NextRequest) {
   try {

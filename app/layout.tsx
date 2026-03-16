@@ -26,9 +26,16 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://sauravkshukla.tech"),
 
   icons: {
-    icon: "/favicon.png",
+    icon: [
+      { url: "/favicon.png", sizes: "32x32", type: "image/png" },
+      { url: "/favicon.png", sizes: "16x16", type: "image/png" },
+    ],
     shortcut: "/favicon.png",
-    apple: "/favicon.png",
+    apple: "/apple-icon.png",
+  },
+
+  alternates: {
+    canonical: "https://sauravkshukla.tech",
   },
 
   openGraph: {
@@ -58,6 +65,7 @@ export const metadata: Metadata = {
   },
 
   generator: "Next.js",
+  themeColor: "#000000",
 }
 
 export default function RootLayout({
@@ -79,6 +87,7 @@ export default function RootLayout({
             name: "Saurav Kumar Shukla",
             url: "https://sauravkshukla.tech",
             jobTitle: "Full Stack Developer",
+            image: "https://sauravkshukla.tech/preview.png",
             description:
               "Full Stack Developer and Data Science enthusiast specializing in React, Next.js, AI and automation.",
             alumniOf: {

@@ -47,11 +47,10 @@ export function Navigation() {
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.6, ease: "easeOut" }}
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled
           ? "glass-nav shadow-lg shadow-black/20"
           : "bg-transparent border-b border-transparent"
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
@@ -76,11 +75,10 @@ export function Navigation() {
                   initial={{ opacity: 0, y: -20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.07, duration: 0.4 }}
-                  className={`nav-link relative px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${
-                    isActive
+                  className={`nav-link relative px-4 py-2 rounded-md text-sm font-medium transition-all duration-200 ${isActive
                       ? "text-primary"
                       : "text-muted-foreground hover:text-primary"
-                  }`}
+                    }`}
                 >
                   {item.label}
                   {isActive && (

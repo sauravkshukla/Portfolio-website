@@ -27,7 +27,7 @@ export function AboutSection() {
   ]
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+    <section id="about" className="scroll-mt-32 py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
       {/* Background subtle orbs */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="orb orb-violet absolute w-[350px] h-[350px] -top-20 -right-20 opacity-10" />

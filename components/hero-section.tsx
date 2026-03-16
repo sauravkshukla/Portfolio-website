@@ -33,6 +33,7 @@ export function HeroSection() {
       type === "webdev"
         ? "/resume/Saurav_Kumar_Shukla_WebDev_Resume.pdf"
         : "/resume/Saurav_Kumar_Shukla_AI_ML_Resume.pdf"
+
     window.open(fileName, "_blank")
     setResumeDropdownOpen(false)
   }
@@ -51,7 +52,9 @@ export function HeroSection() {
   }
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8 overflow-hidden">
+    // ✅ FIX: removed overflow-hidden here
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-16 px-4 sm:px-6 lg:px-8">
+
       {/* Floating background orbs */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="orb orb-indigo absolute w-[500px] h-[500px] -top-40 -left-40" />
@@ -66,9 +69,11 @@ export function HeroSection() {
           initial="hidden"
           animate="visible"
         >
+
           {/* Profile Image */}
           <motion.div variants={itemVariants} className="mb-8">
             <div className="relative inline-block">
+
               {/* Spinning gradient ring */}
               <div
                 className="absolute inset-0 rounded-full"
@@ -79,6 +84,7 @@ export function HeroSection() {
                   borderRadius: "9999px",
                 }}
               />
+
               <div className="relative w-36 h-36 mx-auto rounded-full overflow-hidden border-4 border-background/80 shadow-2xl avatar-glow">
                 <Image
                   src="/images/profile.jpg"
@@ -124,6 +130,7 @@ export function HeroSection() {
             variants={itemVariants}
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
+
             {/* Hire Me */}
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
               <Button
@@ -137,8 +144,9 @@ export function HeroSection() {
               </Button>
             </motion.div>
 
-            {/* View Resume Dropdown */}
+            {/* Resume Dropdown */}
             <div ref={dropdownRef} className="relative">
+
               <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.97 }}>
                 <Button
                   variant="outline"
@@ -148,17 +156,21 @@ export function HeroSection() {
                 >
                   <Download className="h-4 w-4" />
                   View Resume
+
                   <motion.div
                     animate={{ rotate: resumeDropdownOpen ? 180 : 0 }}
                     transition={{ duration: 0.2 }}
                   >
                     <ChevronDown className="h-4 w-4" />
                   </motion.div>
+
                 </Button>
               </motion.div>
 
               <AnimatePresence>
                 {resumeDropdownOpen && (
+
+                  // ✅ added z-50 and removed clipping issue
                   <motion.div
                     initial={{ opacity: 0, y: -10, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -166,7 +178,9 @@ export function HeroSection() {
                     transition={{ duration: 0.2, ease: "easeOut" }}
                     className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-64 glass-card rounded-xl overflow-hidden z-50 shadow-2xl"
                   >
+
                     <div className="p-1">
+
                       <motion.button
                         whileHover={{ backgroundColor: "rgba(99, 102, 241, 0.15)", x: 4 }}
                         className="w-full text-left px-4 py-3 rounded-lg text-sm font-medium transition-all duration-200 flex items-center gap-3"
@@ -175,10 +189,12 @@ export function HeroSection() {
                         <div className="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center flex-shrink-0">
                           <Code2 className="w-4 h-4 text-blue-400" />
                         </div>
+
                         <div>
                           <p className="font-semibold">Web Development</p>
                           <p className="text-xs text-muted-foreground">Full Stack &amp; Frontend</p>
                         </div>
+
                         <ExternalLink className="w-3 h-3 ml-auto text-muted-foreground" />
                       </motion.button>
 
@@ -190,14 +206,18 @@ export function HeroSection() {
                         <div className="w-8 h-8 rounded-lg bg-violet-500/20 flex items-center justify-center flex-shrink-0">
                           <span className="text-violet-400 text-sm font-bold">AI</span>
                         </div>
+
                         <div>
                           <p className="font-semibold">AI &amp; ML</p>
                           <p className="text-xs text-muted-foreground">Data Science &amp; AI Projects</p>
                         </div>
+
                         <ExternalLink className="w-3 h-3 ml-auto text-muted-foreground" />
                       </motion.button>
+
                     </div>
                   </motion.div>
+
                 )}
               </AnimatePresence>
             </div>
@@ -213,6 +233,7 @@ export function HeroSection() {
                 Contact Me
               </Button>
             </motion.div>
+
           </motion.div>
         </motion.div>
       </div>
